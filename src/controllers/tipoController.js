@@ -2,8 +2,9 @@ const {crearTipo, listarTipo, actualizarTipo, softDeleteTipo}=require("../models
 
 exports.createTipo=async(req,res,next)=>{
     const {descripcion}=req.body
+    const {idpais}=req.body
     try {
-        const response=await crearTipo(descripcion)
+        const response=await crearTipo(idpais,descripcion)
         res.status(202).json(response)
     } catch (error) {
         next(error)
@@ -23,8 +24,9 @@ exports.getTipo=async(req,res,next)=>{
 exports.updateTipo=async(req,res,next)=>{
     const {id}=req.params
     const{descripcion}=req.body
+    const{idpais}=req.body
     try {
-        const response=await actualizarTipo(descripcion,id)
+        const response=await actualizarTipo(idpais,descripcion,id)
         res.status(202).json(response)
     } catch (error) {
         next(error)

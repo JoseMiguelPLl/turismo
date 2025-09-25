@@ -5,15 +5,15 @@ exports.listarTipo=async()=>{
     return rows 
 }
 
-exports.crearTipo=async(descripcion)=>{
+exports.crearTipo=async(idpais,descripcion)=>{
     const estado="Activo"
-    const {rows}=await pool.query("INSERT INTO ciudad (descripcion,estado) VALUES($1,$2)",[descripcion,estado])
+    const {rows}=await pool.query("INSERT INTO ciudad (idpais,descripcion,estado) VALUES($1,$2,$3)",[idpais,descripcion,estado])
     return rows[0]
 
 }
 
-exports.actualizarTipo=async(descripcion,id)=>{
-    const {rows}=await pool.query("UPDATE ciudad SET descripcion=$1 where id=$2 RETURNING *",[descripcion,id])
+exports.actualizarTipo=async(idpais,descripcion,id)=>{
+    const {rows}=await pool.query("UPDATE ciudad SET idpais=$1, descripcion=$2  where id=$3 RETURNING *",[idpais,descripcion,id])
     return rows[0]
 }
 

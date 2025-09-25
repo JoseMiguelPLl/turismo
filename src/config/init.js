@@ -11,21 +11,20 @@ const initDatabase = async () => {
           usuario VARCHAR(100) NOT NULL,
           password VARCHAR(255) NOT NULL,
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      );
-      CREATE TABLE IF NOT EXISTS ciudad (
-          id SERIAL PRIMARY KEY,
-          descripcion VARCHAR(100) NOT NULL,
-          estado VARCHAR(255) NOT NULL,
-          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      );
-        
+      );        
       CREATE TABLE IF NOT EXISTS pais (
           id SERIAL PRIMARY KEY,
           descripcion VARCHAR(100) NOT NULL,
           estado VARCHAR(255) NOT NULL,
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
-
+      CREATE TABLE IF NOT EXISTS ciudad (
+          id SERIAL PRIMARY KEY,
+          idpais INTEGER REFERENCES pais(id) ,
+          descripcion VARCHAR(100) NOT NULL,
+          estado VARCHAR(255) NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
 
       -- Tabla de motos
       CREATE TABLE IF NOT EXISTS viaje (
