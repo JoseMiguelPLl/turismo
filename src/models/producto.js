@@ -23,7 +23,7 @@ exports.crearProducto = async (idpais, idciudad, imagen, detalle, precio, titulo
 exports.actualizarProducto = async (idpais, idciudad, imagen, detalle, precio, titulo, id) => {
     const {rows} = await pool.query(
         "UPDATE viaje SET idpais=$1, idciudad=$2, imagen_url=$3, detalle=$4, precio=$5, titulo=$6 WHERE id=$7 RETURNING *",
-        [idpais, idciudad, imagen, detalle, cilindrada, precio, titulo, id]
+        [idpais, idciudad, imagen, detalle, precio, titulo, id]
     );
     return rows[0];
 }
